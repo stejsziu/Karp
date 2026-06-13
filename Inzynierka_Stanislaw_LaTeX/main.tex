@@ -51,15 +51,15 @@
 % Streszczenie po polsku dla \langpol
 %-------------------------------------
 \cleardoublepage % Zaczynamy od nieparzystej strony
-\abstract \lipsum[1-3]
-\keywords XXX, XXX, XXX
+\abstract \input{tex/streszczenie}
+\keywords bezzałogowy pojazd podwodny, ROV, AUV, ROS 2, Gazebo, model 6-DOF, sterowanie nieliniowe, fuzja sensoryczna, Pixhawk
 
 %----------------------------------------
 % Streszczenie po angielsku dla \langpol
 %----------------------------------------
 \clearpage
-\secondabstract \kant[1-3]
-\secondkeywords XXX, XXX, XXX
+\secondabstract \input{tex/abstract} %\kant[1-3]
+\secondkeywords unmanned underwater vehicle, ROV, AUV, ROS 2, Gazebo, 6-DOF model, nonlinear control, sensor fusion, Pixhawk
 
 \pagestyle{plain}
 
@@ -75,14 +75,15 @@
 \cleardoublepage % Zaczynamy od nieparzystej strony
 \pagestyle{headings}
 
-\input{tex/1-wstep}         % Wygodnie jest trzymać każdy rozdział w osobnym pliku.
-\input{tex/2-de-finibus}    % Umożliwia to również łatwą migrację do nowej wersji szablonu:
-\input{tex/3-code-listings} % zazwyczaj wystarczy podmienić plik src/wut-thesis.cls
+%\input{tex/1-wstep}         % Wygodnie jest trzymać każdy rozdział w osobnym pliku.
+\input{tex/raport-za-wstep}
+
+%\input{tex/2-de-finibus}    % Umożliwia to również łatwą migrację do nowej wersji szablonu:
+%\input{tex/3-code-listings} % zazwyczaj wystarczy podmienić plik src/wut-thesis.cls
 
  % Można też pisać rozdziały w jednym pliku.
 \clearpage % Zawsze zaczynamy rozdział od nowej strony
-\section{Summatio}
-\lipsum[4-10]
+
 
 %---------------
 % Bibliografia

@@ -1,14 +1,9 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'main.blg'
-[88] biber:340> INFO - === wto kwi 28, 2026, 13:18:52
-[105] Biber.pm:419> INFO - Reading 'main.bcf'
-[181] Biber.pm:979> INFO - Found 10 citekeys in bib section 0
-[197] Biber.pm:4419> INFO - Processing section 0
-[209] Biber.pm:4610> INFO - Looking for bibtex file 'bibliografia.bib' for section 0
-[211] bibtex.pm:1713> INFO - LaTeX decoding ...
-[222] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliografia.bib'
-[315] UCollate.pm:68> INFO - Overriding locale 'pl-PL' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[316] UCollate.pm:68> INFO - Overriding locale 'pl-PL' defaults 'variable = shifted' with 'variable = non-ignorable'
-[316] Biber.pm:4239> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'pl-PL'
-[324] bbl.pm:660> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[329] bbl.pm:763> INFO - Output to main.bbl
+[76] biber:340> INFO - === sob cze 13, 2026, 13:34:36
+[92] Biber.pm:419> INFO - Reading 'main.bcf'
+[153] Biber.pm:979> INFO - Found 0 citekeys in bib section 0
+[166] bbl.pm:660> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[167] bbl.pm:763> INFO - Output to main.bbl
+[167] Biber.pm:131> WARN - The file 'main.bcf' does not contain any citations!
+[167] Biber.pm:133> INFO - WARNINGS: 1
