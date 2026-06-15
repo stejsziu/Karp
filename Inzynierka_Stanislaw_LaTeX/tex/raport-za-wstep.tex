@@ -1,98 +1,73 @@
 \section{Przewidywany temat pracy}
-Przewidywany temat pracy dyplomowej inżynierskiej brzmi: \textbf{,,System sterowania bezzałogowego pojazdu podwodnego''}. Projekt realizowany jest na kierunku Robotyka i Automatyka, w specjalności Robotyka, w Instytucie Techniki Lotniczej i Mechaniki Stosowanej Wydziału Mechanicznego Energetyki i Lotnictwa Politechniki Warszawskiej.
+Przewidywany temat pracy dyplomowej inżynierskiej to: \textbf{,,System sterowania bezzałogowego pojazdu podwodnego''}.
 
-Praca ma charakter badawczo-implementacyjny, skupiający się przede wszystkim na warstwie programowej (\emph{Software}) bezzałogowego pojazdu podwodnego (UUV -- \emph{Unmanned Underwater Vehicle}). Projektowany system ma w pierwszej fazie rozwoju obsługiwać pojazd uwiązany kablem (ROV -- \emph{Remotely Operated Vehicle}), jednak jego architektura logiczna i algorytmiczna jest rozwijana z myślą o pełnej skalowalności w stronę pojazdu w pełni autonomicznego (AUV -- \emph{Autonomous Underwater Vehicle}). Zakres inżynierski obejmuje sformułowanie nieliniowego modelu matematycznego w sześciu stopniach swobody (6-DOF), implementację i strojenie struktur sterowania oraz weryfikację działania w zaawansowanym środowisku symulacyjnym.
+Praca ma charakter praktyczny, skupiający się na warstwie oprogramowania bezzałogowego pojazdu podwodnego (UUV -- \emph{Unmanned Underwater Vehicle}). Projektowany system ma w pierwszej fazie rozwoju obsługiwać pojazd uwiązany kablem (ROV -- \emph{Remotely Operated Vehicle}), jednak jego architektura logiczna i algorytmiczna jest rozwijana z myślą o pełnej skalowalności w stronę pojazdu autonomicznego (AUV -- \emph{Autonomous Underwater Vehicle}). 
+
+Zakres inżynierski obejmuje sformułowanie nieliniowego modelu matematycznego w sześciu stopniach swobody, implementację i strojenie struktur sterowania oraz weryfikację działania w środowisku symulacyjnym.
 
 \section{Cel pracy i jego uzasadnienie}
 
-\subsection{Cel podstawowy}
-Celem podstawowym pracy dyplomowej jest opracowanie, implementacja oraz weryfikacja symulacyjna kompletnego systemu sterowania ruchem i głębokością bezzałogowego pojazdu podwodnego, opartego na zaawansowanym modelu matematycznym obiektu i przygotowanego do bezproblemowego wdrożenia na fizycznej platformie sprzętowej (\emph{sim-to-real transfer}).
+Celem podstawowym pracy dyplomowej jest opracowanie, implementacja oraz weryfikacja symulacyjna kompletnego systemu sterowania ruchem bezzałogowego pojazdu podwodnego, opartego na modelu matematycznym obiektu i przygotowanego do bezproblemowego wdrożenia na fizycznej platformie sprzętowej (\emph{sim-to-real transfer}).
 
 \subsection{Cele szczegółowe}
 \begin{enumerate}
-    \item \textbf{Wyprowadzenie modelu 6-DOF:} Opracowanie pełnego, nieliniowego modelu kinematyki i dynamiki pojazdu podwodnego z uwzględnieniem specyfiki środowiska morskiego (siły hydrodynamiczne, masa dodana, tłumienie wiskotyczne).
-    \item \textbf{Projekt algorytmów sterowania:} Implementacja oraz porównanie skuteczności klasycznych regulatorów (np. PID) z autorskim algorytmem sterowania uwzględniającym specyficzną, nieliniową dynamikę drona (kompensacja dynamiki).
-    \item \textbf{Budowa środowiska SITL:} Utworzenie wiernego poligonu badawczego w środowisku ROS 2 (\emph{Robot Operating System}) oraz symulatora Gazebo, umożliwiającego testy w pętli zamkniętej (\emph{Software-in-the-loop}).
-    \item \textbf{Projekt architektury sprzętowo-programowej:} Zapewnienie pełnej kompatybilności kodu źródłowego z docelową architekturą wbudowaną typu Pixhawk (z oprogramowaniem ArduSub) oraz komputerem pomocniczym (np. Raspberry Pi), co umożliwi eliminację fizycznego kabla uwiązującego (tether) w przyszłych ewolucjach platformy.
-    \item \textbf{Fuzja sensoryczna w sprzężeniu zwrotnym:} Wykorzystanie danych z układu IMU (orientacja przestrzenna i przyspieszenia) oraz czujnika ciśnienia (estymacja głębokości) do domknięcia pętli regulacji.
+    \item Opracowanie pełnego, nieliniowego modelu kinematyki i dynamiki pojazdu podwodnego z uwzględnieniem specyfiki środowiska morskiego (siły hydrodynamiczne, masa dodana, tłumienie wiskotyczne).
+    \item Implementacja regulatorów, np. PID, wraz z algorytmem sterowania uwzględniającym specyficzną dynamikę drona.
+    \item Utworzenie środowiska testowego w ROS 2 (\emph{Robot Operating System}) oraz symulatora Gazebo, umożliwiającego testy w pętli zamkniętej (\emph{Software-in-the-loop}).
+    \item Wykorzystanie danych z układu IMU oraz czujnika ciśnienia (pomiar pośredni głębokości) do domknięcia pętli regulacji.
 \end{enumerate}
 
 \subsection{Uzasadnienie}
-Badania nad bezzałogowymi pojazdami podwodnymi (UUV) napotykają znacznie większe bariery implementacyjne niż ma to miejsce w przypadku bezzałogowych statków powietrznych (BSP). Środowisko wodne, ze względu na dużą gęstość płynu, wprowadza silnie nieliniowe efekty dynamiczne, takie jak zjawisko masy dodanej (wciąganie mas płynu wraz z ruchem kadłuba) oraz nieliniowe tłumienie hydrodynamiczne. Ponadto, silna fuzja sensoryczna jest krytyczna ze względu na brak dostępności sygnału GPS pod wodą, co wymusza opieranie nawigacji na sensorach inercyjnych (IMU) i hydrostatycznych. Wypełnienie luki w postaci braku otwartych, dobrze udokumentowanych i przetestowanych struktur sterowania nieliniowego dla platform klasy ROV/AUV w środowisku ROS 2 stanowi istotny wkład inżynierski i naukowy.
+Projektowanie, budowa i weryfikacja bezzalogowych pojazdów podwodnych napotykają znacznie większe bariery implementacyjne niż ma to miejsce w przypadku bezzałogowych statków powietrznych. Środowisko wodne, ze względu na dużą gęstość, wprowadza silnie nieliniowe efekty dynamiczne oraz nieliniowe tłumienie hydrodynamiczne. 
+
+Ze względu na brak dostępności sygnału GPS pod wodą, samolokalizacja opiera się na czujnikach inercyjnych (IMU) i hydrostatycznych. To sprawia, że mało jest dobrze udokumntowanych i dostępnych w domenie publicznej projektów wykorzystujących sterowanie inne niż manualne lub z wykorzystaniem prostych regulatorów.
 
 \section{Przegląd stanu wiedzy}
 
-\subsection{Modelowanie dynamiki obiektów podwodnych}
-Współczesne podejście do modelowania matematycznego jednostek pływających i podwodnych opiera się na standardach stowarzyszenia SNAME (\emph{Society of Naval Architects and Marine Engineers}), definiujących układy współrzędnych związanych z ziemią (NED) oraz z ciałem pojazdu. Kluczowym autorytetem w tej dziedzinie jest profesor Thor I. Fossen, którego macierzowy zapis równań ruchu uwzględnia sztywne ciało, siły bezwładności mas dodanych, macierze sil Coriolisa i sił odśrodkowych, a także wektory tłumienia wiskotycznego i sił hydrostatycznych (wypór i ciężar). Do weryfikacji poprawności obliczeń analitycznych powszechnie stosuje się otwarte pakiety symulacyjne, takie jak MSS (\emph{Marine Systems Simulator}) rozwijane w środowisku MATLAB.
+Współczesne podejście do modelowania matematycznego jednostek pływających i podwodnych opiera się na standardach stowarzyszenia SNAME (\emph{Society of Naval Architects and Marine Engineers}), definiujących układy współrzędnych związanych z ziemią (NED) oraz z ciałem pojazdu. 
 
-\subsection{Dane syntetyczne i transfer sim-to-real}
-Z uwagi na wysokie koszty budowy prototypów oraz trudną dostępność infrastruktury basenowej, kluczową rolę w nowoczesnej robotyce morskiej odgrywa faza symulacji typu SITL (\emph{Software-in-the-loop}). Wykorzystanie frameworku ROS 2 w połączeniu z zaawansowanym fizycznie silnikiem Gazebo pozwala na generowanie danych syntetycznych oraz testowanie algorytmów sterowania w warunkach odzwierciedlających rzeczywiste zakłócenia (np. prądy wodne). Odpowiednie odwzorowanie parametrów fizycznych w symulatorze minimalizuje tzw. \emph{sim-to-real gap}, umożliwiając bezpośrednie przeniesienie wypracowanego kodu sterującego na mikrokontroler fizycznego robota bez ryzyka uszkodzenia sprzętu.
+Kluczowym autorytetem w tej dziedzinie jest profesor Thor I. Fossen, którego macierzowy zapis równań ruchu uwzględnia sztywne ciało, siły bezwładności mas dodanych, macierze sil Coriolisa i sił odśrodkowych, a także wektory tłumienia wiskotycznego i sił hydrostatycznych (wypór i ciężar). 
+
+Do weryfikacji poprawności obliczeń analitycznych powszechnie stosuje się otwarto-źródłowe pakiety symulacyjne, takie jak MSS (\emph{Marine Systems Simulator}) rozwijane m.in. w środowisku MATLAB.
 
 \section{Metodyka}
+Z uwagi na wysokie koszty budowy prototypów oraz trudną dostępność infrastruktury basenowej, kluczową rolę w nowoczesnej robotyce morskiej odgrywa faza symulacji typu SITL. Wykorzystanie ROS 2 w połączeniu z zaawansowanym fizycznie silnikiem Gazebo pozwala na generowanie danych syntetycznych oraz testowanie algorytmów sterowania w warunkach przypominających rzeczywiste. 
 
-\subsection{Architektura sprzętowa i sensoryka}
-Choć niniejsza praca koncentruje się na warstwie oprogramowania, cała struktura systemu została zaprojektowana pod kątem bezpośredniej implementacji na rzeczywistym sprzęcie. Układ sterowania niskopoziomowego oraz fuzja sensoryczna będą docelowo uruchamiane na autopilocie z rodziny Pixhawk zintegrowanym z oprogramowaniem ArduSub. 
+Odpowiednie odwzorowanie parametrów fizycznych w symulatorze umożliwia bezpośrednie przeniesienie wypracowanego kodu sterującego na mikrokontroler fizycznego robota bez ryzyka uszkodzenia sprzętu.
 
-Nadrzędne zadania obliczeniowe, komunikacja sieciowa oraz algorytmy nieliniowe będą realizowane na komputerze pomocniczym (\emph{Companion Computer}) -- np. Raspberry Pi. Głównymi czujnikami wykorzystywanymi w pętli sprzężenia zwrotnego układu regulacji są:
-\begin{itemize}
-    \item \textbf{Układ IMU (Inertial Measurement Unit):} Odpowiedzialny za szybki pomiar prędkości kątowych, przyspieszeń liniowych oraz estymację orientacji przestrzennej drona (kąty Eulera / kwaterniony).
-    \item \textbf{Czujnik ciśnienia piezorezystancyjny:} Służący do precyzyjnej estymacji głębokości zanurzenia pojazdu na podstawie pomiaru ciśnienia hydrostatycznego.
-\end{itemize}
-
-\subsection{Stos technologiczny}
-Architektura oprogramowania opiera się na nowoczesnym ekosystemie robotycznym:
-\begin{itemize}
-    \item \textbf{ROS 2:} Zarządzanie architekturą rozproszoną, wymiana danych pomiędzy węzłami sterującymi, odczytem czujników a estymatorem stanu za pomocą tematów (\emph{Topics}) oraz usług (\emph{Services}) w czasie rzeczywistym.
-    \item \textbf{Gazebo:} Trójwymiarowy symulator fizyczny realizujący symulację środowiska podwodnego, uwzględniający siły wyporu, grawitacji oraz oporu ośrodka płynnego.
-    \item \textbf{C++ / Python:} Języki implementacji węzłów sterowania -- klasycznych regulatorów PID oraz algorytmu z kompensacją nieliniowej dynamiki.
-\end{itemize}
+Choć praca koncentruje się na zagadnieniu oprogramowania, cała jej struktura jest projektowana pod kątem możliwości implementacji na rzeczywistym sprzęcie. Obliczenia, komunikacja oraz algorytmy sterowania będą realizowane na komputerze pomocniczym, np. Raspberry Pi.
 
 \section{Plan pracy dyplomowej}
 Harmonogram realizacji zadań inżynierskich obejmuje okres od czerwca 2026 roku do stycznia 2027 roku i przedstawia się następująco:
-\begin{itemize}
-    \item \textbf{Czerwiec 2026:} Analiza literatury przedmiotu, szczegółowe studia nad stanem wiedzy w zakresie automatyki i inżynierii morskiej.
-    \item \textbf{Lipiec 2026:} Wyprowadzenie pełnego matematycznego modelu kinematyki i dynamiki pojazdu podwodnego w ujęciu 6-DOF (sztywne ciało + hydrodynamika).
-    \item \textbf{Sierpień 2026:} Zbudowanie wirtualnego modelu robota oraz integracja i konfiguracja środowiska symulacyjnego ROS 2 + Gazebo.
-    \item \textbf{Wrzesień 2026:} Projektowanie i implementacja struktur sterowania: klasycznych struktur PID oraz zaawansowanego algorytmu z kompensacją dynamiki nieliniowej.
-    \item \textbf{Październik 2026:} Strojenie parametrów układu regulacji, analiza uchybów ustalonych, stabilności oraz odporności na zakłócenia zewnętrzne.
-    \item \textbf{Listopad 2026:} Przeprowadzenie kompleksowych testów symulacyjnych w konfiguracji Software-in-the-loop (SITL), weryfikacja gotowości kodu pod architekturę Pixhawk.
-    \item \textbf{Grudzień 2026:} Opracowanie i analiza porównawcza zebranych wyników, rozpoczęcie intensywnej redakcji tekstu pracy dyplomowej.
-    \item \textbf{Styczeń 2027:} Ostateczna redakcja tekstu pracy, naniesienie poprawek sugerowanych przez promotora oraz złożenie gotowej pracy dyplomowej.
-\end{itemize}
+
+\newpage
+
+\begin{table}[hbtp]
+    \centering
+    \renewcommand{\arraystretch}{1.5} % Zwiększa odstępy wierszy o 50%
+    \caption{Harmonogram realizacji zadań}
+    \label{tab:harmonogram}
+    \vspace{0.5em}
+    \begin{tabular}{llp{10cm}}
+        \toprule
+        \textbf{Rok} & \textbf{Miesiąc} & \textbf{Zakres realizowanych zadań} \\
+        \cmidrule(lr){1-1} \cmidrule(lr){2-2} \cmidrule(lr){3-3} % Podkreślenie tylko nagłówków
+        2026 & Kwiecień - czerwiec   & Analiza i wykorzystanie literatury przedmiotu, szczegółowe studia nad stanem wiedzy w zakresie automatyki i inżynierii morskiej. \\
+             & Lipiec     & Wyprowadzenie pełnego matematycznego modelu kinematyki i dynamiki pojazdu podwodnego w ujęciu 6 stopni swobody. \\
+             & Sierpień   & Zbudowanie wirtualnego modelu robota oraz integracja środowiska ROS 2 + Gazebo. \\
+             & Wrzesień   & Projektowanie i implementacja struktur sterowania: klasycznych struktur PID. \\
+             & Październik & Strojenie parametrów układu regulacji, analiza uchybów ustalonych. \\
+             & Listopad   & Przeprowadzenie kompleksowych testów symulacyjnych SITL, weryfikacja kodu. \\
+             & Grudzień   & Opracowanie i analiza porównawcza wyników, redakcja tekstu pracy. \\
+        \midrule % Delikatna linia przed ostatnim wierszem
+        2027 & Styczeń    & Ostateczna redakcja tekstu pracy, naniesienie poprawek oraz złożenie gotowej pracy. \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 \section{Podsumowanie}
-Podsumowując, proponowany temat pracy odpowiada na istotne wyzwania współczesnej robotyki podwodnej, jakimi są nieliniowość środowiska oraz ograniczenia sensoryczne. Opracowanie zaawansowanego matematycznego modelu 6-DOF oraz implementacja struktury sterowania kompensującej dynamikę płynu pozwoli na uzyskanie znacznie wyższej precyzji prowadzenia pojazdu niż w przypadku standardowych podejść liniowych. Dzięki zachowaniu reżimu zgodności z architekturą Pixhawk, ArduSub oraz Raspberry Pi, wytworzone oprogramowanie będzie w pełni gotowe do bezproblemowej migracji z symulatora na fizycznego drona, co stanowi solidny punkt wyjścia do budowy autonomicznych systemów klasy AUV.
+Proponowany temat pracy odpowiada na istotne wyzwania współczesnej robotyki podwodnej, jakimi są nieliniowość środowiska oraz ograniczenia sensoryczne. 
 
-\begin{thebibliography}{9}
+Opracowanie zaawansowanego matematycznego modelu 6-DOF oraz implementacja struktury sterowania kompensującej dynamikę płynu pozwoli na uzyskanie znacznie wyższej precyzji prowadzenia pojazdu niż w przypadku standardowych podejść liniowych. 
 
-\bibitem{fossen}
-T. I. Fossen, \emph{Handbook of Marine Craft Hydrodynamics and Motion Control}, John Wiley \& Sons, 2021.
-\begin{quote}
-Pozycja ta stanowi absolutny fundament teoretyczny pracy w zakresie mechaniki płynów i dynamiki obiektów morskich. Została wykorzystana do analitycznego wyprowadzenia pełnego nieliniowego modelu 6-DOF, definicji macierzy mas dodanych, sił Coriolisa oraz oporów wiskotycznych działających na kadłub pojazdu.
-\end{quote}
-
-\bibitem{antonelli}
-G. Antonelli, \emph{Underwater Robots: Motion and Force Control of Vehicle-Manipulator Systems}, Springer, 2014.
-\begin{quote}
-Książka ta jest kluczowym źródłem wiedzy w obszarze syntezy układów sterowania dedykowanych dla robotów podwodnych. Dostarcza szczegółowych wskazówek dotyczących radzenia sobie z ograniczeniami układów wykonawczych, wpływu prądów wodnych oraz projektowania algorytmów sterowania ruchem w obecności silnych zakłóceń otoczenia.
-\end{quote}
-
-\bibitem{ogata}
-K. Ogata, \emph{Modern Control Engineering}, Pearson, 2010.
-\begin{quote}
-Podręcznik ten posłużył jako podstawowe wsparcie w zakresie klasycznej i nowoczesnej teorii sterowania. Zawarte w nim metody analizy stabilności w dziedzinie częstotliwości i czasu oraz techniki doboru nastaw regulatorów PID są kluczowe dla etapu strojenia i porównania zaimplementowanych pętli sprzężenia zwrotnego.
-\end{quote}
-
-\bibitem{ros2gazebo}
-\emph{Oficjalna dokumentacja środowiska ROS 2 oraz symulatora Gazebo}, Dokumentacja elektroniczna open-source.
-\begin{quote}
-Źródło to jest niezbędne do poprawnej konfiguracji struktury rozproszonej oprogramowania, implementacji węzłów sterujących w C++/Python oraz budowy kompletnego środowiska symulacji typu SITL. Umożliwia ono stworzenie mechanizmów komunikacji (tematów i usług) identycznych z systemami uruchamianymi na rzeczywistym robocie.
-\end{quote}
-
-\bibitem{ardusub}
-\emph{Dokumentacja techniczna projektów ArduSub oraz platformy sprzętowej Pixhawk}, Dokumentacja elektroniczna.
-\begin{quote}
-Materiały te są kluczowe dla zapewnienia pełnej kompatybilności projektowanej warstwy programowej z docelowym hardwarem inercyjnym i wykonawczym. Pozwalają na zaprojektowanie interfejsów komunikacyjnych i fuzji danych sensorycznych (IMU, ciśnienie) w sposób gwarantujący bezproblemowy transfer algorytmów na fizyczny komputer pomocniczy i kontroler lotu.
-\end{quote}
-
-\end{thebibliography}
+Oprogramowanie będzie w pełni gotowe do bezproblemowej migracji z symulatora na fizycznego drona, co stanowi solidny punkt wyjścia do budowy autonomicznych systemów klasy AUV.

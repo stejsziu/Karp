@@ -69,6 +69,7 @@
 \RequirePackage{url}           % URL-sensitive line breaks
 \RequirePackage{xspace}        % Remove duplicated spaces
 \RequirePackage{comment}       % Commenting out blocks of text
+\RequirePackage{booktabs}      % Professional-quality tables
 
 %----------------------------
 % Parametrized dependencies
