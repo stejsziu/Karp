@@ -2,3 +2,17 @@ build
 test/**/*.textest
 .sconsign.dblite
 .vscode
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.bcf
+*.blg
+*.lof
+*.lot
+*.run.xml
+*.app
