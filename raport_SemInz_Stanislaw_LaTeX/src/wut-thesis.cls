@@ -77,7 +77,7 @@
 % Bibliography in biber
 \RequirePackage[
     backend=biber,
-    style=ieee
+    style=reading % bylo =ieee
 ]{biblatex}
 % Custom figure and table captions
 \RequirePackage[
